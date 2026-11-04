@@ -31,6 +31,12 @@
     <string name="setup_location">Locatieservices</string>
     <string name="location_access_summary"><b>Apps toestaan die uw toestemming hebben gevraagd</b> om informatie over uw locatie te gebruiken. Dit kan uw huidige locatie en voorgaande locaties omvatten.</string>
     <string name="location_agps_access_summary">Wanneer locatie is ingeschakeld, <b>download satellietondersteuningsgegevens van internet</b>, wat de opstartprestatie van GPS aanzienlijk kan verbeteren.</string>
+    <string name="setup_update_title">Zoeken naar updates</string>
+    <string name="setup_update_checking">Dit duurt maar even.</string>
+    <string name="setup_update_available">Update beschikbaar</string>
+    <string name="setup_update_available_summary">Er is een nieuwere softwareversie beschikbaar voor deze telefoon. Als u nu kiest voor bijwerken, wordt het updatescherm geopend zodra de installatie klaar is. U kunt ook later bijwerken.</string>
+    <string name="setup_update_now">Nu bijwerken</string>
+    <string name="setup_update_later">Later</string>
     <string name="update_recovery_title">Lineage Recovery bijwerken</string>
     <string name="update_recovery_description">Lineage Recovery updaten bij de eerste start na elke update</string>
     <string name="update_recovery_warning">Recovery zal worden bijgewerkt zodra u de installatie hebt voltooid. Als u dit intact wilt houden, schakelt u deze functie uit.</string>

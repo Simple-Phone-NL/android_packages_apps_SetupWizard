@@ -23,11 +23,13 @@ import static org.lineageos.setupwizard.SetupWizardApp.ENABLE_RECOVERY_UPDATE;
 import static org.lineageos.setupwizard.SetupWizardApp.KEY_SEND_METRICS;
 import static org.lineageos.setupwizard.SetupWizardApp.LOGV;
 import static org.lineageos.setupwizard.SetupWizardApp.NAVIGATION_OPTION_KEY;
+import static org.lineageos.setupwizard.SetupWizardApp.OPEN_UPDATER_AFTER_SETUP;
 import static org.lineageos.setupwizard.SetupWizardApp.UPDATE_RECOVERY_PROP;
 import static android.view.WindowManagerPolicyConstants.NAV_BAR_MODE_3BUTTON_OVERLAY;
 
 import android.app.StatusBarManager;
 import android.app.WallpaperManager;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -40,6 +42,8 @@ import android.hardware.biometrics.BiometricManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.os.UserHandle;
@@ -67,7 +71,10 @@ public class SetupWizardUtils {
     private static final String GMS_PACKAGE = "com.google.android.gms";
     private static final String GMS_SUW_PACKAGE = "com.google.android.setupwizard";
     private static final String GMS_TV_SUW_PACKAGE = "com.google.android.tungsten.setupwraith";
-    private static final String UPDATER_PACKAGE = "org.lineageos.updater";
+    public static final String UPDATER_PACKAGE = "org.lineageos.updater";
+    private static final String UPDATER_ACTIVITY = UPDATER_PACKAGE + ".UpdatesActivity";
+    // Lets the wizard's exit, which may bring up the launcher, complete before opening the updater.
+    private static final long OPEN_UPDATER_DELAY_MILLIS = 2000;
 
     private static final String UPDATE_RECOVERY_EXEC = "/vendor/bin/install-recovery.sh";
     private static final String CONFIG_HIDE_RECOVERY_UPDATE = "config_hideRecoveryUpdate";
@@ -201,7 +208,24 @@ public class SetupWizardUtils {
         enableStatusBar();
         context.finishAffinity();
         context.nextAction(RESULT_SKIP);
+        handleOpenUpdater(context.getApplicationContext());
         Log.i(TAG, "Setup complete!");
+    }
+
+    private static void handleOpenUpdater(Context context) {
+        if (!SetupWizardApp.getSettingsBundle().getBoolean(OPEN_UPDATER_AFTER_SETUP)) {
+            return;
+        }
+        Intent intent = new Intent()
+                .setClassName(UPDATER_PACKAGE, UPDATER_ACTIVITY)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            try {
+                context.startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                Log.e(TAG, "Could not open the updater", e);
+            }
+        }, OPEN_UPDATER_DELAY_MILLIS);
     }
 
     public static boolean isBluetoothDisabled() {

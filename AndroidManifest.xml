@@ -33,6 +33,7 @@
     <uses-permission android:name="lineageos.permission.FINISH_SETUP" />
     <uses-permission android:name="lineageos.permission.WRITE_SETTINGS" />
     <uses-permission android:name="lineageos.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="org.lineageos.updater.permission.CHECK_FOR_UPDATE" />
 
     <permission
         android:name="lineageos.permission.FINISH_SETUP"
@@ -188,6 +189,19 @@
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="org.lineageos.setupwizard.LINEAGE_RECOVERY_UPDATE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".UpdateCheckActivity"
+            android:label="@string/activity_label_empty"
+            android:configChanges="mcc|mnc"
+            android:immersive="true"
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="org.lineageos.setupwizard.LINEAGE_UPDATE_CHECK" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

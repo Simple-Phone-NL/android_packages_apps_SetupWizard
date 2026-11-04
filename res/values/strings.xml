@@ -52,6 +52,14 @@
     <string name="location_access_summary"><b>Allow apps that have asked your permission</b> to use your location information. This may include your current location and past locations.</string>
     <string name="location_agps_access_summary">When location is on, <b>download satellite assistance data from the internet</b>, which can greatly improve the GPS startup performance.</string>
 
+    <!-- System update page -->
+    <string name="setup_update_title">Checking for updates</string>
+    <string name="setup_update_checking">This only takes a moment.</string>
+    <string name="setup_update_available">Update available</string>
+    <string name="setup_update_available_summary">A newer version of the software is available for this phone. If you choose to update now, the update screen opens when setup is finished. You can also update later.</string>
+    <string name="setup_update_now">Update now</string>
+    <string name="setup_update_later">Later</string>
+
     <!-- Recovery update page -->
     <string name="update_recovery_title">Update Lineage Recovery</string>
     <string name="update_recovery_description">Updates Lineage Recovery on first boot subsequent to every update.</string>

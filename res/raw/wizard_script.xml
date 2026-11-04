@@ -137,6 +137,9 @@
     -->
     <WizardAction wizard:uri="intent:#Intent;package=org.lineageos.setupwizard;action=org.lineageos.setupwizard.DEVICE_SPECIFIC;end" id="device_specific">
         <!-- Skip lineage_settings and theme_settings steps; dark mode is applied by default -->
+        <result wizard:action="update_check" />
+    </WizardAction>
+    <WizardAction wizard:uri="intent:#Intent;package=org.lineageos.setupwizard;action=org.lineageos.setupwizard.LINEAGE_UPDATE_CHECK;end" id="update_check">
         <result wizard:action="finish" />
     </WizardAction>
     <WizardAction wizard:uri="intent:#Intent;package=org.lineageos.setupwizard;action=org.lineageos.setupwizard.LINEAGE_SETUP_COMPLETE;end" id="finish">

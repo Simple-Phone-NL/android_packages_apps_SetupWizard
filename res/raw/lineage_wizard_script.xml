@@ -84,6 +84,12 @@
         wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_LOCKSCREEN_SETTINGS;end"
         id="lockscreen_settings">
         <!-- Skip theme_settings step; dark mode is applied by default -->
+        <result wizard:action="update_check" />
+    </WizardAction>
+
+    <WizardAction
+        wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_UPDATE_CHECK;end"
+        id="update_check">
         <result wizard:action="finish" />
     </WizardAction>
 

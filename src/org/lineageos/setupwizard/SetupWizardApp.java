@@ -42,6 +42,7 @@ public class SetupWizardApp extends Application {
     public static final String DISABLE_NAV_KEYS = "disable_nav_keys";
     public static final String ENABLE_RECOVERY_UPDATE = "enable_recovery_update";
     public static final String UPDATE_RECOVERY_PROP = "persist.vendor.recovery_update";
+    public static final String OPEN_UPDATER_AFTER_SETUP = "open_updater_after_setup";
 
     public static final String NAVIGATION_OPTION_KEY = "navigation_option";
     public static final String TEXT_SIZE_OPTION_KEY = "text_size_option";
